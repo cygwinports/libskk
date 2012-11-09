@@ -1,0 +1,14 @@
+--- origsrc/libskk-1.0.0/libskk/Makefile.am	2012-02-27 00:28:16.000000000 -0600
++++ src/libskk-1.0.0/libskk/Makefile.am	2012-11-09 02:14:30.460731600 -0600
+@@ -86,8 +86,9 @@ gir_DATA = Skk-@SKK_API_VERSION@.gir
+ typelibdir = $(libdir)/girepository-1.0
+ typelib_DATA = Skk-@SKK_API_VERSION@.typelib
+ 
+-Skk-@SKK_API_VERSION@.typelib: Skk-@SKK_API_VERSION@.gir
+-	@INTROSPECTION_COMPILER@ --shared-library=libskk -o $@ $^
++Skk-@SKK_API_VERSION@.typelib: Skk-@SKK_API_VERSION@.gir libskk.la
++	libskk_dlname=`$(SED) -n "s/^dlname='\([A-Za-z0-9.+-]\+\)'/\1/p" libskk.la` ; \
++	@INTROSPECTION_COMPILER@ --shared-library=$$libskk_dlname -o $@ $<
+ endif
+ 
+ Skk-@SKK_API_VERSION@.gir skk-internals-@SKK_API_VERSION@.vapi skk-@SKK_API_VERSION@.vapi: libskk.la

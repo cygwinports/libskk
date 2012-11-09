@@ -1,0 +1,10 @@
+--- origsrc/libskk-1.0.0/libskk/Makefile.am	2012-02-27 00:28:16.000000000 -0600
++++ src/libskk-1.0.0/libskk/Makefile.am	2012-11-09 01:39:57.130583200 -0600
+@@ -49,6 +49,7 @@ libskk_la_LDFLAGS =							\
+ 	-version-info "$(LT_CURRENT)":"$(LT_REVISION)":"$(LT_AGE)"	\
+ 	-export-dynamic							\
+ 	-export-symbols $(srcdir)/libskk.symbols			\
++	-no-undefined							\
+ 	$(NULL)
+ 
+ libskkincludedir = $(includedir)/libskk

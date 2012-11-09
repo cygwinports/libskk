@@ -1,0 +1,30 @@
+inherit gnome2
+
+NAME="libskk"
+VERSION=1.0.0
+RELEASE=1
+CATEGORY="X11"
+SUMMARY="Japanese SKK input method library"
+DESCRIPTION="GObject-based library to deal with Japanese kana-to-kanji (SKK)
+conversion method."
+HOMEPAGE="https://github.com/ueno/libskk"
+SRC_URI="https://github.com/downloads/ueno/libskk/${P}.tar.gz"
+PATCH_URI="1.0.0-no-undefined.patch  1.0.0-gir-shlib.patch"
+
+PKG_NAMES="skk libskk0 libskk-common libskk-devel girepository-Skk1.0 vala-skk1.0"
+skk_SUMMARY="${SUMMARY% *} utility"
+skk_CONTENTS="usr/bin/skk.exe usr/share/man/man1/"
+libskk0_SUMMARY="${SUMMARY} (runtime)"
+libskk0_REQUIRES="libskk-common"
+libskk0_CONTENTS="usr/bin/cygskk-0.dll"
+libskk_common_SUMMARY="${SUMMARY} (data)"
+libskk_common_CONTENTS="usr/share/doc/ usr/share/libskk/ usr/share/locale/"
+libskk_devel_SUMMARY="${SUMMARY} (development)"
+libskk_devel_CONTENTS="usr/include/ usr/lib/lib* usr/lib/pkgconfig/"
+girepository_Skk1_0_SUMMARY="${SUMMARY} (GObject Introspection)"
+girepository_Skk1_0_REQUIRES="libskk0"
+girepository_Skk1_0_CONTENTS="usr/*/gir*/Skk-1.0.*"
+vala_skk1_0_SUMMARY="${SUMMARY} (Vala bindings)"
+vala_skk1_0_CONTENTS="usr/share/vala/"
+
+KEEP_LA_FILES="none"
