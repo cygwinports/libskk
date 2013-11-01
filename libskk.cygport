@@ -1,17 +1,18 @@
 inherit gnome2
 
 NAME="libskk"
-VERSION=1.0.0
+VERSION=1.0.1
 RELEASE=1
-CATEGORY="X11"
+CATEGORY="Libs"
 SUMMARY="Japanese SKK input method library"
 DESCRIPTION="GObject-based library to deal with Japanese kana-to-kanji (SKK)
 conversion method."
 HOMEPAGE="https://github.com/ueno/libskk"
-SRC_URI="https://github.com/downloads/ueno/libskk/${P}.tar.gz"
+SRC_URI="https://bitbucket.org/libskk/libskk/downloads/${NAME}-${VERSION}.tar.gz"
 PATCH_URI="1.0.0-no-undefined.patch  1.0.0-gir-shlib.patch"
 
 PKG_NAMES="skk libskk0 libskk-common libskk-devel girepository-Skk1.0 vala-skk1.0"
+skk_CATEGORY="Libs"
 skk_SUMMARY="${SUMMARY% *} utility"
 skk_CONTENTS="usr/bin/skk.exe usr/share/man/man1/"
 libskk0_SUMMARY="${SUMMARY} (runtime)"
